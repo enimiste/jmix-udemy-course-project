@@ -6,10 +6,11 @@ import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @JmixEntity
@@ -29,9 +30,9 @@ public class Task {
     @NotNull
     private String name;
 
+    @FutureOrPresent(message = "{msg://com.company.projectmanagement.entity/Task.dueDate.validation.FutureOrPresent}")
     @Column(name = "DUE_DATE")
-    @Temporal(TemporalType.DATE)
-    private Date dueDate;
+    private LocalDate dueDate;
 
     @JoinColumn(name = "ASSIGNEE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -53,6 +54,14 @@ public class Task {
     @PositiveOrZero(message = "{msg://com.company.projectmanagement.entity/Task.estimation.validation.PositiveOrZero}")
     @Column(name = "ESTIMATION")
     private Integer estimation;
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
 
     public Project getProject() {
         return project;
@@ -92,14 +101,6 @@ public class Task {
 
     public void setAssignee(User assignee) {
         this.assignee = assignee;
-    }
-
-    public Date getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
     }
 
     public String getName() {
