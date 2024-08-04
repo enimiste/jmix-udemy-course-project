@@ -42,6 +42,7 @@ public class TimeEntry {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User user;
 
+    @Lob
     @InstanceName
     @Column(name = "DESCRIPTION")
     private String description;
