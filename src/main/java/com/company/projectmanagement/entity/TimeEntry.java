@@ -5,6 +5,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.Date;
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class TimeEntry {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Task task;
 
+    @PositiveOrZero(message = "{msg://com.company.projectmanagement.entity/TimeEntry.timeSpent.validation.PositiveOrZero}")
     @Column(name = "TIME_SPENT", nullable = false)
     @NotNull
     private Integer timeSpent;
