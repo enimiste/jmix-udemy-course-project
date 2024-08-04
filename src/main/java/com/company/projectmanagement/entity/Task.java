@@ -1,6 +1,8 @@
 package com.company.projectmanagement.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
@@ -11,7 +13,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "TASK_", indexes = {
-        @Index(name = "IDX_TASK__ASSIGNEE", columnList = "ASSIGNEE_ID")
+        @Index(name = "IDX_TASK__ASSIGNEE", columnList = "ASSIGNEE_ID"),
+        @Index(name = "IDX_TASK__PROJECT", columnList = "PROJECT_ID")
 })
 @Entity(name = "Task_")
 public class Task {
@@ -33,6 +36,12 @@ public class Task {
     @ManyToOne(fetch = FetchType.LAZY)
     private User assignee;
 
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JoinColumn(name = "PROJECT_ID", nullable = false)
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Project project;
+
     @Column(name = "PRIORITY")
     private String priority;
 
@@ -42,6 +51,14 @@ public class Task {
 
     @Column(name = "ESTIMATION")
     private Integer estimation;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 
     public Integer getEstimation() {
         return estimation;

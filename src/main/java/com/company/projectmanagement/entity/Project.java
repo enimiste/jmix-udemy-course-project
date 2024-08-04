@@ -1,11 +1,13 @@
 package com.company.projectmanagement.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
@@ -31,6 +33,18 @@ public class Project {
     @Column(name = "DESCRIPTION")
     @Lob
     private String description;
+
+    @Composition
+    @OneToMany(mappedBy = "project")
+    private List<Task> tasks;
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 
     public String getDescription() {
         return description;
