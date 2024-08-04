@@ -1,6 +1,8 @@
 package com.company.projectmanagement.entity;
 
+import io.jmix.core.MetadataTools;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
@@ -42,7 +44,6 @@ public class TimeEntry {
     private User user;
 
     @Lob
-    @InstanceName
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -92,5 +93,11 @@ public class TimeEntry {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"description"})
+    public String getInstanceName(MetadataTools metadataTools) {
+        return metadataTools.format(description).substring(0, 100) + " ...";
     }
 }
