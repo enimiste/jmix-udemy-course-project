@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @JmixEntity
@@ -32,10 +32,9 @@ public class TimeEntry {
     @NotNull
     private Integer timeSpent;
 
-    @Column(name = "ENTRY_DATE", nullable = false)
-    @Temporal(TemporalType.DATE)
     @NotNull
-    private Date entryDate;
+    @Column(name = "ENTRY_DATE", nullable = false)
+    private LocalDateTime entryDate;
 
     @JoinColumn(name = "USER_ID", nullable = false)
     @NotNull
@@ -46,6 +45,14 @@ public class TimeEntry {
     @InstanceName
     @Column(name = "DESCRIPTION")
     private String description;
+
+    public void setEntryDate(LocalDateTime entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public LocalDateTime getEntryDate() {
+        return entryDate;
+    }
 
     public String getDescription() {
         return description;
@@ -61,14 +68,6 @@ public class TimeEntry {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Date getEntryDate() {
-        return entryDate;
-    }
-
-    public void setEntryDate(Date entryDate) {
-        this.entryDate = entryDate;
     }
 
     public Integer getTimeSpent() {
