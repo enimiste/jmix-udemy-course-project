@@ -7,6 +7,7 @@ import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.Date;
 import java.util.UUID;
@@ -49,6 +50,7 @@ public class Task {
     @Lob
     private String description;
 
+    @PositiveOrZero(message = "{msg://com.company.projectmanagement.entity/Task.estimation.validation.PositiveOrZero}")
     @Column(name = "ESTIMATION")
     private Integer estimation;
 
