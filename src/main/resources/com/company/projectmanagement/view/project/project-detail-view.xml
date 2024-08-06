@@ -5,9 +5,19 @@
     <data>
         <instance id="projectDc"
                   class="com.company.projectmanagement.entity.Project">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="manager" fetchPlan="_base"/>
+            </fetchPlan>
             <loader id="projectDl"/>
         </instance>
+        <collection id="usersDc" class="com.company.projectmanagement.entity.User">
+            <loader id="usersDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from User e]]>
+                </query>
+            </loader>
+            <fetchPlan extends="_base"/>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -20,6 +30,11 @@
         <formLayout id="form" dataContainer="projectDc">
             <textField id="nameField" property="name"/>
             <textArea id="descriptionField" height="9.5em" property="description"/>
+            <entityComboBox property="manager" itemsContainer="usersDc">
+                <actions>
+                    <action id="entityClear" type="entity_clear"/>
+                </actions>
+            </entityComboBox>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>

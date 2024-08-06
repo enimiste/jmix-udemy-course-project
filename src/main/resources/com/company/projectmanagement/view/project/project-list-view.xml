@@ -6,7 +6,9 @@
     <data>
         <collection id="projectsDc"
                     class="com.company.projectmanagement.entity.Project">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="manager" fetchPlan="_instance_name"/>
+            </fetchPlan>
             <loader id="projectsDl" readOnly="true">
                 <query>
                     <![CDATA[select e from Project e]]>
@@ -42,12 +44,21 @@
                   dataContainer="projectsDc"
                   columnReorderingAllowed="true">
             <actions>
-                <action id="create" type="list_create"/>
-                <action id="edit" type="list_edit"/>
+                <action id="create" type="list_create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
+                <action id="edit" type="list_edit">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
                 <column property="name"/>
+                <column property="manager"/>
                 <column property="description"/>
             </columns>
         </dataGrid>
