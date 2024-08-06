@@ -35,7 +35,7 @@
             <datePicker property="dueDate"/>
             <select property="priority"/>
             <textField property="estimation"/>
-            <textArea property="description" height="10em"/>
+            <textArea id="descriptionField" property="description" height="10em" maxLength="500"/>
         </formLayout>
         <hbox>
             <button id="detailSaveCloseButton" action="detailSaveClose"/>
