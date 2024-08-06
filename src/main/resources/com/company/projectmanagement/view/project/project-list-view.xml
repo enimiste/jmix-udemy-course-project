@@ -7,7 +7,9 @@
         <collection id="projectsDc"
                     class="com.company.projectmanagement.entity.Project">
             <fetchPlan extends="_base">
-                <property name="manager" fetchPlan="_instance_name"/>
+                <property name="manager" fetchPlan="_instance_name">
+                    <property name="email"/>
+                </property>
                 <property name="tasks" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="projectsDl" readOnly="true">
@@ -60,6 +62,7 @@
             <columns resizable="true">
                 <column property="name"/>
                 <column property="manager"/>
+                <column property="manager.email" header="msg://column.header"/>
                 <column property="description"/>
             </columns>
         </dataGrid>
