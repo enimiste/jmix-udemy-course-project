@@ -12,7 +12,7 @@ import io.jmix.flowui.view.*;
 @ViewController("Task_.detail")
 @ViewDescriptor("task-detail-view.xml")
 @EditedEntityContainer("taskDc")
-@DialogMode(width = "64em")
+@DialogMode(width = "AUTO", height = "AUTO")
 public class TaskDetailView extends StandardDetailView<Task> {
 
 }
