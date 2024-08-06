@@ -47,16 +47,8 @@
                   dataContainer="projectsDc"
                   columnReorderingAllowed="true">
             <actions>
-                <action id="create" type="list_create">
-                    <properties>
-                        <property name="openMode" value="DIALOG"/>
-                    </properties>
-                </action>
-                <action id="edit" type="list_edit">
-                    <properties>
-                        <property name="openMode" value="DIALOG"/>
-                    </properties>
-                </action>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
             </actions>
             <columns resizable="true">
