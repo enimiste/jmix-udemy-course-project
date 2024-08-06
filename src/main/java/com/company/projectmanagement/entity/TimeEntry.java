@@ -98,6 +98,7 @@ public class TimeEntry {
     @InstanceName
     @DependsOnProperties({"description"})
     public String getInstanceName(MetadataTools metadataTools) {
+        if (description == null) return null;
         return metadataTools.format(description).substring(0, 100) + " ...";
     }
 }
