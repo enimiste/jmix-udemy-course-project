@@ -58,10 +58,10 @@
                 <action id="showUserSubstitutions" type="sec_showUserSubstitutions"/>
             </actions>
             <columns resizable="true">
+                <column property="avatar">
                 <column property="username"/>
                 <column property="firstName"/>
                 <column property="lastName"/>
-                <column property="email"/>
                 <column property="timeZoneId"/>
                 <column property="active"/>
             </columns>
