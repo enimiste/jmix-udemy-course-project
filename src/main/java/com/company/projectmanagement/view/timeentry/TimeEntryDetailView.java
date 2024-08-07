@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.ZonedDateTime;
 
-@Route(value = "timeEntries/:id", layout = MainView.class)
+@Route(value = "time-entries/:id", layout = MainView.class)
 @ViewController("TimeEntry.detail")
 @ViewDescriptor("time-entry-detail-view.xml")
 @EditedEntityContainer("timeEntryDc")
