@@ -1,6 +1,7 @@
 package com.company.projectmanagement.entity;
 
 import io.jmix.core.DeletePolicy;
+import io.jmix.core.FileRef;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.InstanceName;
@@ -54,6 +55,17 @@ public class Task {
     @PositiveOrZero(message = "{msg://com.company.projectmanagement.entity/Task.estimation.validation.PositiveOrZero}")
     @Column(name = "ESTIMATION")
     private Integer estimation;
+
+    @Column(name = "ATTACHMENT", length = 1024)
+    private FileRef attachment;
+
+    public FileRef getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(FileRef attachment) {
+        this.attachment = attachment;
+    }
 
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;

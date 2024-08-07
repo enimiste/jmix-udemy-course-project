@@ -39,6 +39,9 @@
             </select>
             <textField id="estimationField" property="estimation"/>
             <textArea id="descriptionField" height="9.5em" property="description"/>
+            <fileStorageUploadField id="attachmentField" property="attachment" clearButtonVisible="true"
+                                    dataContainer="taskDc" fileNameVisible="true" maxFileSize="10000000"
+                                    uploadIcon="vaadin:upload"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseBtn" action="saveAction"/>
