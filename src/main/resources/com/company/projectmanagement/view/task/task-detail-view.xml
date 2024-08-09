@@ -35,8 +35,7 @@
                     <action id="entityClear" type="entity_clear"/>
                 </actions>
             </entityPicker>
-            <select id="priorityField" property="priority">
-            </select>
+            <select id="priorityField" property="priority" emptySelectionAllowed="true"/>
             <textField id="estimationField" property="estimation"/>
             <textArea id="descriptionField" height="9.5em" property="description"/>
             <fileStorageUploadField id="attachmentField" property="attachment" clearButtonVisible="true"
