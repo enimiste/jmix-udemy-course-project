@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import static io.jmix.security.model.RowLevelPolicyAction.*;
 
-@RowLevelRole(name = "RestrictedProjectsRole", code = RestrictedProjectsRole.CODE)
+@RowLevelRole(name = "Restricted Projects Role", code = RestrictedProjectsRole.CODE)
 public interface RestrictedProjectsRole {
     String CODE = "restricted-projects-role";
 

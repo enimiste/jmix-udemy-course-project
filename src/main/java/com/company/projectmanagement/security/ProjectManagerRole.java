@@ -9,7 +9,7 @@ import io.jmix.security.role.annotation.ResourceRole;
 import io.jmix.securityflowui.role.annotation.MenuPolicy;
 import io.jmix.securityflowui.role.annotation.ViewPolicy;
 
-@ResourceRole(name = "Project Manager", code = ProjectManagerRole.CODE, scope = "UI")
+@ResourceRole(name = "Project Manager Role", code = ProjectManagerRole.CODE, scope = "UI")
 public interface ProjectManagerRole {
     String CODE = "project-manager";
 
