@@ -4,7 +4,6 @@ import com.company.projectmanagement.entity.Project;
 import com.company.projectmanagement.entity.ProjectStats;
 import com.company.projectmanagement.entity.Task;
 import io.jmix.core.DataManager;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -30,6 +29,7 @@ public class ProjectStatsService {
                     stat.setId(project.getId());
                     stat.setTasksCount(project.getTasks().size());
                     stat.setPlannedEfforts(project.getTasks().stream()
+                            .filter(task -> task.getEstimation() != null)
                             .mapToInt(Task::getEstimation)
                             .sum());
                     stat.setActualEfforts(getActualEffortsByProject(project.getId()));
