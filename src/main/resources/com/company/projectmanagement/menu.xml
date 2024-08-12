@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
-    <menu id="application" title="msg://com.company.projectmanagement/menu.application.title" opened="true">
-        <item view="User.list" title="msg://com.company.projectmanagement.view.user/UserListView.title"/>
+    <item view="User.list" title="msg://com.company.projectmanagement.view.user/UserListView.title"/>
+    <separator/>
+    <menu opened="true" id="application" title="msg://com.company.projectmanagement/menu.application.title">
         <item view="Project.list" title="msg://com.company.projectmanagement.view.project/projectListView.title"/>
-        <item view="Task_.list" title="msg://com.company.projectmanagement.view.task/taskListView.title"/>
-        <item view="TimeEntry.list" title="msg://com.company.projectmanagement.view.timeentry/timeEntryListView.title"/>
         <item view="ProjectStats.list"
               title="msg://com.company.projectmanagement.view.projectstats/projectStatsListView.title"/>
+        <menu id="task" description="msg://com.company.projectmanagement/menu_config.task.description"
+              title="msg://com.company.projectmanagement/menu_config.task.title">
+            <item view="Task_.list" title="msg://com.company.projectmanagement.view.task/taskListView.title"/>
+            <item view="TimeEntry.list"
+                  title="msg://com.company.projectmanagement.view.timeentry/timeEntryListView.title"/>
+        </menu>
     </menu>
-
 </menu-config>
